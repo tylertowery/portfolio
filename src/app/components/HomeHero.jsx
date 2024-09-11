@@ -18,7 +18,7 @@ export default function HomeHero() {
   }
 
   const handleResume = () => {
-    router.push('../Resume');
+    window.open('https://tylers-portfolio-lemon.vercel.app/Resume', '_blank');
   }
   // TODO:
   // title is not matching and throwing error on rendering
