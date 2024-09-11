@@ -1,5 +1,10 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import { config } from '@fortawesome/fontawesome-svg-core';
+import Head from 'next/head';
+import Script from 'next/script';
+config.autoAddCss = false; /* eslint-disable import/first */
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,7 +16,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Script
+          strategy='beforeInteractive'
+          src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+          async
+          defer
+        />
+        {children}
+      </body>
     </html>
   );
 }
