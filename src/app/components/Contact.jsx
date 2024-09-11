@@ -7,6 +7,7 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('submitting form!');
+    console.log(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY);
 
     const form = e.target;
     const formData = new FormData(form);

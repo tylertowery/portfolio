@@ -11,7 +11,7 @@ export async function POST(request) {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
     },
-    body: `secret=${process.env.NEXT_PUBLIC_RECAPTCHA_SECRET_KEY}&response=${token}`,
+    body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`,
   });
 
   const data = await response.json();
@@ -26,14 +26,14 @@ export async function POST(request) {
     const transporter = nodemailer.createTransport({
       service: 'Gmail',
       auth: {
-        user: process.env.NEXT_PUBLIC_EMAIL_USER,
-        pass: process.env.NEXT_PUBLIC_EMAIL_PASS,
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
       },
     })
 
     const mailOptions = {
       from: email,
-      to: process.env.NEXT_PUBLIC_EMAIL_USER,
+      to: process.env.EMAIL_USER,
       subject: `New contact form message from ${name}`,
       text: `New message from ${email}: ${message}`,
     };
